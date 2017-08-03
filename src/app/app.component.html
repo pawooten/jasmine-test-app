@@ -4,6 +4,15 @@
     Welcome to {{title}}!
   </h1>
 </div>
-<h2>Here are some links to help you start: </h2>
+<label>Server Message: <span>{{serverMessage}}</span></label>
+<br/>
+<br/>
+<input type="button" value="Get Message" (click)="onGetMessageClicked()" />
+<br/>
+<br/>
+<label>Server Message: <span>{{observableServerMessage}}</span></label>
+<br/>
+<br/>
+<input type="button" value="Get Observable Message" (click)="onGetObservableMessageClicked()" />
 
 
