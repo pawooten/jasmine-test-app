@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as path from 'path';
 import {Server} from 'ws';
+// import {Url} from 'url';
 
 const app = express();
 
@@ -22,6 +23,7 @@ const httpServer = app.listen(8000, 'localhost', () => {
 // WebSocket Server
 const wsServer: Server = new Server({port: 8085});
 console.log('WebSocket server is listening on port 8085');
-wsServer.on('connection', webSocket => {
+wsServer.on('connection', ( webSocket, request ) => {
+  // const location = Url.parse(request.url, true);
   webSocket.send('This message was pushed by the WebSocket server');
 });
