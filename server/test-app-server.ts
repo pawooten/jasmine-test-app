@@ -1,29 +1,22 @@
 import * as express from 'express';
 import * as path from 'path';
 import {Server} from 'ws';
-// import {Url} from 'url';
+import * as url from 'url';
+import * as http from 'http';
 
 const app = express();
 
-// Serve http content
-// extra comment
-app.get('/', (request, response) => {
-  console.log('get / ');
-    response.sendFile(path.join(__dirname, '../client/client.html'));
-});
-
-app.use('/', express.static(path.join(__dirname, '..', 'client')));
-app.use('/node_modules', express.static(path.join(__dirname, '..', 'node_modules')));
-
-const httpServer = app.listen(8000, 'localhost', () => {
-    const {address, port} = httpServer.address();
-    console.log('HTTP Server is listening on %s %s', address, port);
-});
-
-// WebSocket Server
-const wsServer: Server = new Server({port: 8085});
+const server =  http.createServer( app );
+const wss: Server = new Server({ server });
 console.log('WebSocket server is listening on port 8085');
-wsServer.on('connection', ( webSocket, request ) => {
-  // const location = Url.parse(request.url, true);
+wss.on('connection/', ( webSocket ) => {
   webSocket.send('This message was pushed by the WebSocket server');
 });
+// wss.on('connection/GetCurrentTime', ( webSocket ) => {
+//   webSocket.send('Time to get paid');
+// });
+
+server.listen(8085, function listening() {
+  console.log('Listening on %d', server.address().port);
+});
+

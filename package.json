@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently --kill-others \"ng serve\" \"node dist\\out-tsc\\server\\test-app-server.js\"",
+    "start-angular": "ng serve",
+    "debug-server": "node --inspect dist\\out-tsc\\server\\test-app-server.js\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
