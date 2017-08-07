@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import { AppTitleService } from './services/app-title-service';
+import { AppMessageService } from './services/app-message-service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -8,6 +10,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [{provide: AppTitleService, useValue: { getTitle : function() { return 'app'; } }}, {provide: AppMessageService }]
     }).compileComponents();
   }));
 
